@@ -1,192 +1,392 @@
+/* 전체 앱 스타일 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
 /* 시작 화면 */
 .start-screen {
-  padding: 3rem;
+  padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f3f4f6;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
 }
 
 .logo {
-  width: 200px;
-  height: 80px;
-  margin-bottom: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  height: 72px;
+  margin-bottom: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .main-title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2563eb;
+  color: #e0e7ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .description {
   font-size: 1.25rem;
-  color: #6b7280;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .start-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   color: white;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.start-button:hover::before {
+  left: 100%;
 }
 
 .start-button:hover {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(79, 70, 229, 0.6);
 }
 
 /* 게임 화면 */
 .game-screen {
   padding: 2rem;
   min-height: 100vh;
-  background-color: white;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.game-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 0;
 }
 
 .step-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .instruction {
-  margin-bottom: 1.5rem;
-  color: #6b7280;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   width: 100%;
-  max-width: 64rem;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  width: 9rem;
-  height: 5rem;
+  width: 100%;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background-color: #f3f4f6;
+  background: rgba(255, 255, 255, 0.9);
   color: #374151;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #4f46e5;
 }
 
 .card.selected {
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   color: white;
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+  border-color: #4f46e5;
+}
+
+.card.selected::before {
+  opacity: 1;
 }
 
 .card-placeholder {
   font-size: 0.875rem;
   color: #9ca3af;
+  position: relative;
+  z-index: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .next-button {
   margin-top: 1rem;
-  padding: 0.5rem 1.5rem;
-  background-color: #2563eb;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   color: white;
+  font-weight: 600;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .next-button:hover:not(.disabled) {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
 }
 
 .next-button.disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* 결과 화면 */
 .result-screen {
   padding: 2rem;
   text-align: center;
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   min-height: 100vh;
+  position: relative;
+}
+
+.result-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  z-index: 0;
 }
 
 .result-title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 2rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .result-container {
-  max-width: 42rem;
+  max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .result-table {
   width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #d1d5db;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: white;
 }
 
 .result-table th,
 .result-table td {
-  border: 1px solid #d1d5db;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.5rem;
+  text-align: left;
 }
 
 .result-table thead {
-  background-color: #e5e7eb;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+}
+
+.result-table thead th {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .category-cell {
   font-weight: 600;
-  background-color: white;
+  background-color: #f8fafc;
+  color: #374151;
+  border-right: 1px solid #e5e7eb;
 }
 
 .keyword-cell {
   background-color: white;
+  color: #4f46e5;
+  font-weight: 500;
 }
 
 .restart-button {
   margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
+  font-weight: 600;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .restart-button:hover {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .step-title {
+    font-size: 1.75rem;
+  }
+  
+  .result-title {
+    font-size: 2rem;
+  }
+  
+  .card {
+    height: 70px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .start-screen,
+  .game-screen,
+  .result-screen {
+    padding: 1rem;
+  }
 }

@@ -318,6 +318,10 @@ body {
   overflow: hidden;
 }
 
+.card.selected * {
+  color: white !important;
+}
+
 .card::before {
   content: '';
   position: absolute;
@@ -337,8 +341,8 @@ body {
 }
 
 .card.selected {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  color: white;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  color: white !important;
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
   border-color: #4f46e5;
@@ -346,7 +350,7 @@ body {
 }
 
 .card.selected::before {
-  opacity: 0;
+  display: none;
 }
 
 .card-placeholder {
@@ -362,7 +366,8 @@ body {
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  background: transparent !important;
 }
 
 .card > * {

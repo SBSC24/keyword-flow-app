@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/keyword-flow-app/static/css/main.3d3034b3.css",
+    "main.js": "/keyword-flow-app/static/js/main.e3f2411b.js",
+    "static/js/453.0fbc620a.chunk.js": "/keyword-flow-app/static/js/453.0fbc620a.chunk.js",
+    "index.html": "/keyword-flow-app/index.html",
+    "main.3d3034b3.css.map": "/keyword-flow-app/static/css/main.3d3034b3.css.map",
+    "main.e3f2411b.js.map": "/keyword-flow-app/static/js/main.e3f2411b.js.map",
+    "453.0fbc620a.chunk.js.map": "/keyword-flow-app/static/js/453.0fbc620a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d3034b3.css",
+    "static/js/main.e3f2411b.js"
+  ]
+}

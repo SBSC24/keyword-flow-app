@@ -115,6 +115,108 @@ body {
   box-shadow: 0 12px 35px rgba(79, 70, 229, 0.6);
 }
 
+/* Flow 유형 선택 화면 */
+.flow-selection-screen {
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.flow-selection-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.flow-selection-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.flow-selection-description {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.flow-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.flow-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.flow-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.flow-card-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.back-button {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
 /* 게임 화면 */
 .game-screen {
   padding: 2rem;
@@ -153,6 +255,35 @@ body {
   font-size: 1.1rem;
   position: relative;
   z-index: 1;
+}
+
+.progress-indicator {
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-text {
+  display: block;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
 }
 
 .card-grid {
@@ -212,11 +343,10 @@ body {
   box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
   border-color: #4f46e5;
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .card.selected::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .card-placeholder {
@@ -224,6 +354,15 @@ body {
   color: #9ca3af;
   position: relative;
   z-index: 1;
+}
+
+.card-selected-text {
+  font-size: 0.9rem;
+  color: white !important;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
 }
 
 .card > * {
@@ -360,6 +499,11 @@ body {
     gap: 1rem;
   }
   
+  .flow-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
   .main-title {
     font-size: 2rem;
   }
@@ -380,6 +524,10 @@ body {
     height: 70px;
     font-size: 0.9rem;
   }
+  
+  .progress-bar {
+    width: 250px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -389,7 +537,16 @@ body {
   
   .start-screen,
   .game-screen,
-  .result-screen {
+  .result-screen,
+  .flow-selection-screen {
     padding: 1rem;
+  }
+  
+  .flow-card {
+    padding: 1.5rem;
+  }
+  
+  .progress-bar {
+    width: 200px;
   }
 }

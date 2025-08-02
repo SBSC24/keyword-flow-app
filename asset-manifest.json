@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/keyword-flow-app/static/css/main.e139d2ed.css",
+    "main.css": "/keyword-flow-app/static/css/main.f426e06d.css",
     "main.js": "/keyword-flow-app/static/js/main.fd19b08f.js",
     "static/js/453.0fbc620a.chunk.js": "/keyword-flow-app/static/js/453.0fbc620a.chunk.js",
     "static/media/logo.svg": "/keyword-flow-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/keyword-flow-app/index.html",
-    "main.e139d2ed.css.map": "/keyword-flow-app/static/css/main.e139d2ed.css.map",
+    "main.f426e06d.css.map": "/keyword-flow-app/static/css/main.f426e06d.css.map",
     "main.fd19b08f.js.map": "/keyword-flow-app/static/js/main.fd19b08f.js.map",
     "453.0fbc620a.chunk.js.map": "/keyword-flow-app/static/js/453.0fbc620a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e139d2ed.css",
+    "static/css/main.f426e06d.css",
     "static/js/main.fd19b08f.js"
   ]
 }
